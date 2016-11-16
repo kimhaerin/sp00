@@ -23,7 +23,7 @@ public class SmemControllerTest {
 	
 	@Before
 	public void setup(){
-		
+		System.out.println("왜 안되니??");
 	}
 
 }
