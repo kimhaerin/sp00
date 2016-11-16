@@ -6,11 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+dir{
+	border: 2px solid blue;
+	width: 400px;
+	height: 30px;
+}
+
+
+</style>
 <body>
-	<form action="create" method="post" >
-		<input type="text" name='userid'> <input
-			type="text" name='userpw'>
-		<button>확인</button>
-	</form>
+<h2>가입</h2>
+	<dir>
+		<form action="create" method="post">
+			<input type="text" name='userid'> <input type="password"
+				name='userpw'>
+			<button>확인</button>
+		</form>
+	</dir>
 </body>
 </html>

@@ -24,54 +24,62 @@ public class SmemController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(SmemVO vo, Model model) throws Exception {
+	public void create(SmemVO vo, Model model) throws Exception {
 		dao.create(vo);
 		model.addAttribute("vo", vo); // setAttribute와 동일한 역할을 함
-		
-		model.addAttribute("list", dao.list());
-		return "smem/list";
+
 	}
-	
-	@GetMapping("/list")
+
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public void list(SmemVO vo, Model model) throws Exception {
-		
+
+		model.addAttribute("list", dao.list());
+
 	}
-	         @GetMapping("/read/{userid}")
+
+	@GetMapping("/read/{userid}")
 	public String read(@PathVariable("userid") String userid, Model model) throws Exception {
 		model.addAttribute("vo", dao.read(userid));
 		return "smem/read";
 	}
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(SmemVO vo, Model model) throws Exception {
 		dao.delete(vo.getUserid());
-		return "smem/list";
-	}
-	
-
-//	@GetMapping("/list/{bno}")
-//	public void list(Model model, @PathVariable("bno") String bno) throws Exception {
-//		
-//		model.addAttribute("vo", dao.read(bno));
-//	}
-
-	@GetMapping("/doC")
-	public @ResponseBody SmemVO doC() {
-		SmemVO vo = new SmemVO();
-		vo.setUserid("asdf");
-		vo.setUserpw("asdf");
-		return vo;
+		return "smem/result";
 	}
 
-	@GetMapping("/doD")
-	public String doD() {
-		System.out.println("doD called......");
-		return "redirect:./doE";
+	@RequestMapping(value = "/updateAction", method = RequestMethod.POST)
+	public String updateAction(SmemVO vo, Model model) throws Exception {
+		model.addAttribute("vo", vo);
+		System.out.println(vo);
+		
+		return "smem/updateAction";
 	}
 
-	@GetMapping("/doE")
-	public void doE() {
-		System.out.println("doE called!!!!!!");
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(SmemVO vo, Model model) throws Exception {
+		dao.update(vo);
+		return "smem/result";
 	}
+
+	// @GetMapping("/doC")
+	// public @ResponseBody SmemVO doC() {
+	// SmemVO vo = new SmemVO();
+	// vo.setUserid("asdf");
+	// vo.setUserpw("asdf");
+	// return vo;
+	// }
+	//
+	// @GetMapping("/doD")
+	// public String doD() {
+	// System.out.println("doD called......");
+	// return "redirect:./doE";
+	// }
+	//
+	// @GetMapping("/doE")
+	// public void doE() {
+	// System.out.println("doE called!!!!!!");
+	// }
 
 }

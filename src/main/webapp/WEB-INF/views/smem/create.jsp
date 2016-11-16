@@ -6,9 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+div {
+	color: orange;
+	background-color: teal;
+	height: 100%;
+}
+</style>
 <body>
-<h2>create page</h2>
-	<h2>${vo.userid}님환영합니다.</h2>
-	
+	<div>
+		<form action="list" method="post">
+			<h2>create page</h2>
+			<h2>${vo.userid}님환영합니다.</h2>
+			<button>list로 가기</button>
+		</form>
+	</div>
 </body>
 </html>

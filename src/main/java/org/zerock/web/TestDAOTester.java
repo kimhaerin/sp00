@@ -64,8 +64,8 @@ public class TestDAOTester {
 	@Test
 	public void memUpdate() throws Exception {
 		SmemVO vo = new SmemVO();
-		vo.setUserid("user06");
-		vo.setUserpw("user11");
+		vo.setUserid("qqqq");
+		vo.setUserpw("qweqweqweewqewqeqwe");
 		dao.update(vo);
 	}
 
