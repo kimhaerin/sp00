@@ -1,6 +1,7 @@
 package org.zerock.web;
 
 import java.awt.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,14 +28,14 @@ public class SmemController {
 	public String create(SmemVO vo, Model model) throws Exception {
 		dao.create(vo);
 		model.addAttribute("vo", vo); // setAttribute와 동일한 역할을 함
-
+		
+		model.addAttribute("list", dao.list());
 		return "smem/list";
 	}
 	
 	@GetMapping("/list")
 	public void list(SmemVO vo, Model model) throws Exception {
-		dao.list();
-		model.addAttribute("vo", vo);
+		
 	}
 
 //	@GetMapping("/list/{bno}")

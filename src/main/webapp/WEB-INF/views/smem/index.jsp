@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="create" method="post">
+	<form action="create" method="post" >
 		<input type="text" name='userid'> <input
 			type="text" name='userpw'>
 		<button>확인</button>
