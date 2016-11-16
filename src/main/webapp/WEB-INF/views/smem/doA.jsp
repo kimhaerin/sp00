@@ -8,8 +8,8 @@
 </head>
 <body>
 	<form action="doAA" method="post">
-		<input type="text" name='userid'> <input type="text"
-			name='userpw'>
+		<input type="text" name='userid' value = "왜 안되니"> 
+		<input type="text" name='userpw' value = "왜 안되니">
 		<button>확인</button>
 	</form>
 
