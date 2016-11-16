@@ -12,6 +12,7 @@ import org.zerock.domain.SmemVO;
 
 @Controller
 @RequestMapping("/smem/*")
+
 public class SmemController {
 
 	@GetMapping("/doA")
