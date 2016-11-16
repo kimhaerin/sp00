@@ -56,6 +56,12 @@ public class TestDAOTester {
 	}
 
 	@Test
+	public void memList() throws Exception {
+		SmemVO vo = new SmemVO();
+		dao.list();
+	}
+
+	@Test
 	public void memUpdate() throws Exception {
 		SmemVO vo = new SmemVO();
 		vo.setUserid("user06");

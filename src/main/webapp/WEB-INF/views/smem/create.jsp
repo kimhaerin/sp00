@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+<h2>create page</h2>
+	<h2>${vo.userid}님환영합니다.</h2>
 </body>
 </html>

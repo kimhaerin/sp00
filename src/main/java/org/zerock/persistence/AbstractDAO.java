@@ -1,5 +1,7 @@
 package org.zerock.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -22,6 +24,11 @@ public abstract class AbstractDAO<E, K> implements GenericDAO<E, K> {
 	@Override
 	public E read(K key) throws Exception {
 		return sqlSession.selectOne(NAME + ".read", key);
+
+	}
+	@Override
+	public List<E> list() throws Exception {
+		return sqlSession.selectList(NAME + ".list");
 
 	}
 

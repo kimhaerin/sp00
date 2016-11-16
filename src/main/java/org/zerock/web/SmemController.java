@@ -1,48 +1,47 @@
 package org.zerock.web;
 
+import java.awt.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.zerock.domain.SmemVO;
+import org.zerock.persistence.SmemDAO;
 
 @Controller
 @RequestMapping("/smem/*")
 
 public class SmemController {
+	@Autowired
+	private SmemDAO dao;
 
-	@GetMapping("/doA")
-	// @RequestMapping(value = "/doA", method=RequestMethod.GET)
-	public void doA(SmemVO vo, Model model) {
-		System.out.println("=======================");
-		System.out.println(vo);
-		System.out.println("=======================");
+	@GetMapping("/index")
+	public void createAction(SmemVO vo, Model model) {
+	}
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String create(SmemVO vo, Model model) throws Exception {
+		dao.create(vo);
 		model.addAttribute("vo", vo); // setAttribute와 동일한 역할을 함
 
+		return "smem/list";
+	}
+	
+	@GetMapping("/list")
+	public void list(SmemVO vo, Model model) throws Exception {
+		dao.list();
+		model.addAttribute("vo", vo);
 	}
 
-	@PostMapping("/doAA")
-	//@RequestMapping(value = "/doAA", method = RequestMethod.POST)
-	public void doAA(SmemVO vo, Model model) {
-		System.out.println("-----------------------");
-		System.out.println(vo);
-		System.out.println("-----------------------");
-		model.addAttribute("vo", vo); // setAttribute와 동일한 역할을 함
-
-	}
-
-	@GetMapping("/doB/{bno}")
-	public String doB(@PathVariable("bno") int bno) {
-		System.out.println("=======================");
-		System.out.println(bno);
-		System.out.println("=======================");
-
-		return "view";
-	}
+//	@GetMapping("/list/{bno}")
+//	public void list(Model model, @PathVariable("bno") String bno) throws Exception {
+//		
+//		model.addAttribute("vo", dao.read(bno));
+//	}
 
 	@GetMapping("/doC")
 	public @ResponseBody SmemVO doC() {

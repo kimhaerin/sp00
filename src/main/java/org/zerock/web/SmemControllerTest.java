@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,6 +25,9 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**-context.xml" })
 
 public class SmemControllerTest {
+	
+	private static final Logger logger = 
+			LoggerFactory.getLogger(SmemControllerTest.class);
 
 	@Inject
 	private WebApplicationContext ctx;
@@ -42,17 +47,18 @@ public class SmemControllerTest {
 		MvcResult mvcResult = result.andReturn();
 
 		Map<String, Object> map = mvcResult.getModelAndView().getModel();
+		
+		logger.info(""+map.get("vo"));
 
-		System.out.println(map.get("vo"));
 
-		System.out.println("-----------------------");
+		logger.info(""+"-----------------------");
 		Iterator<String> it = map.keySet().iterator();
 
 		while (it.hasNext()) {
 			String key = it.next();
-			System.out.println(key);
-			System.out.println(map.get(key));
-			System.out.println("---------------------");
+			logger.info(""+key);
+			logger.info(""+map.get(key));
+			logger.info(""+"---------------------");
 		}
 
 	}
@@ -67,16 +73,16 @@ public class SmemControllerTest {
 
 		Map<String, Object> map = mvcResult.getModelAndView().getModel();
 
-		System.out.println("Map : " + map.get("vo"));
-		System.out.println("------------------------------------------");
+		logger.info(""+"Map : " + map.get("vo"));
+		logger.info(""+"------------------------------------------");
 
 		Iterator<String> it = map.keySet().iterator();
 
 		while (it.hasNext()) {
 			String key = it.next();
-			System.out.println("key : " + key);
-			System.out.println("value : " + map.get(key));
-			System.out.println("------------------------------------------");
+			logger.info(""+"key : " + key);
+			logger.info(""+"value : " + map.get(key));
+			logger.info(""+"------------------------------------------");
 		}
 
 	}
