@@ -20,8 +20,8 @@ public abstract class AbstractDAO<E, K> implements GenericDAO<E, K> {
 	}
 
 	@Override
-	public E read(K id) throws Exception {
-		return sqlSession.selectOne(NAME + ".read", id);
+	public E read(K key) throws Exception {
+		return sqlSession.selectOne(NAME + ".read", key);
 
 	}
 
@@ -32,8 +32,8 @@ public abstract class AbstractDAO<E, K> implements GenericDAO<E, K> {
 	}
 
 	@Override
-	public void delete(K id) throws Exception {
-		sqlSession.delete(NAME + ".delete", id);
+	public void delete(K key) throws Exception {
+		sqlSession.delete(NAME + ".delete", key);
 
 	}
 
