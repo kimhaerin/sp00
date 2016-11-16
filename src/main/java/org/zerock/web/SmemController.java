@@ -25,8 +25,8 @@ public class SmemController {
 
 	}
 
-	// @PostMapping("/doAA")
-	@RequestMapping(value = "/doAA", method = RequestMethod.POST)
+	@PostMapping("/doAA")
+	//@RequestMapping(value = "/doAA", method = RequestMethod.POST)
 	public void doAA(SmemVO vo, Model model) {
 		System.out.println("-----------------------");
 		System.out.println(vo);
