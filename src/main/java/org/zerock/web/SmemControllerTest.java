@@ -1,5 +1,6 @@
 package org.zerock.web;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -36,17 +37,48 @@ public class SmemControllerTest {
 	@Test
 	public void testDoA() throws Exception {
 		ResultActions result = mockMVC
-				.perform(MockMvcRequestBuilders
-						.post("/smem/doA")
-						.param("userid", "AAAA")
-						.param("userpw", "BBBB"));
-		
+				.perform(MockMvcRequestBuilders.post("/smem/doA").param("userid", "AAAA").param("userpw", "BBBB"));
+
 		MvcResult mvcResult = result.andReturn();
-		
+
 		Map<String, Object> map = mvcResult.getModelAndView().getModel();
-		
+
 		System.out.println(map.get("vo"));
-		
+
+		System.out.println("-----------------------");
+		Iterator<String> it = map.keySet().iterator();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			System.out.println(key);
+			System.out.println(map.get(key));
+			System.out.println("---------------------");
+		}
+
+	}
+
+	@Test
+	public void testDAOPost() throws Exception {
+
+		ResultActions result = mockMVC
+				.perform(MockMvcRequestBuilders.post("/smem/doAA").param("userid", "2bmw3").param("userpw", "bit88"));
+
+		MvcResult mvcResult = result.andReturn();
+
+		Map<String, Object> map = mvcResult.getModelAndView().getModel();
+
+		System.out.println("Map : " + map.get("vo"));
+		System.out.println("------------------------------------------");
+
+		Iterator<String> it = map.keySet().iterator();
+
+		while (it.hasNext()) {
+			String key = it.next();
+			System.out.println("key : " + key);
+			System.out.println("value : " + map.get(key));
+			System.out.println("------------------------------------------");
+		}
+
 	}
 
 }
