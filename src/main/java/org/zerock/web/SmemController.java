@@ -1,12 +1,11 @@
 package org.zerock.web;
 
-import java.awt.List;
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +20,7 @@ public class SmemController {
 	private SmemDAO dao;
 
 	@GetMapping("/index")
-	public void createAction(SmemVO vo, Model model) {
+	public void index(SmemVO vo, Model model) {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -37,6 +36,18 @@ public class SmemController {
 	public void list(SmemVO vo, Model model) throws Exception {
 		
 	}
+	         @GetMapping("/read/{userid}")
+	public String read(@PathVariable("userid") String userid, Model model) throws Exception {
+		model.addAttribute("vo", dao.read(userid));
+		return "smem/read";
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(SmemVO vo, Model model) throws Exception {
+		dao.delete(vo.getUserid());
+		return "smem/list";
+	}
+	
 
 //	@GetMapping("/list/{bno}")
 //	public void list(Model model, @PathVariable("bno") String bno) throws Exception {

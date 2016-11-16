@@ -9,11 +9,17 @@
 </head>
 <h2>list page</h2>
 
+<style>
+li{
+list-style: none;
+}
+</style>
+
 <body>
 	<ul>
 		<c:forEach items="${list}" var="vo">
-			<li>${vo.userid} &nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;  ${vo.userpw}
-		</c:forEach>
+			<li><a href="read/${vo.userid}">${vo.userid}</a> &nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;  ${vo.userpw}
+		</c:forEach> 
 	</ul>
 	
 </body>
